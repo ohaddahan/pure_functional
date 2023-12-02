@@ -1,0 +1,22 @@
+[package]
+name = "functional_macro"
+version = "0.0.0"
+authors = ["ohaddahan <ohaddahan@gmail.com>"]
+description = "A `cargo generate` template for quick-starting a procedural macro crate"
+keywords = ["template", "proc_macro", "procmacro"]
+edition = "2018"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "1"
+proc-macro2 = { version = "1.0", features = ["span-locations"] }
+proc-macro-error = "1.0"
+colored = "2"
+syn = { verison = "2.0", features = ["full", "extra-traits", "parsing"] }
+prettyplease = "0.2.15"
+anyhow = "1.0.0"
+
+[dev-dependencies]
+trybuild = {  verison = "1.0", features = ["diff"] }

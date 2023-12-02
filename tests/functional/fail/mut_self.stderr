@@ -1,0 +1,7 @@
+error: pure_functional: function with self is not supported
+ --> tests/functional/fail/mut_self.rs:8:5
+  |
+8 |     #[pure_functional]
+  |     ^^^^^^^^^^^^^^^^^^
+  |
+  = note: this error originates in the attribute macro `pure_functional` (in Nightly builds, run with -Z macro-backtrace for more info)
