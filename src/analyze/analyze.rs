@@ -164,7 +164,6 @@ mod tests {
     fn find_arc_mutex_args() {
         let func = r#"fn test(i1: Arc<Mutex<i32>>) { }"#;
         let item_fn = syn::parse_str::<ItemFn>(func).unwrap();
-        println!("item_fn ===>  {:#?}", item_fn);
         let fn_analysis = FnAnalysis::new(item_fn);
         assert_eq!(fn_analysis.args.len(), 1);
         assert_eq!(fn_analysis.stmts.len(), 0);

@@ -1,9 +1,9 @@
 use crate::analyze::analyze::FnAnalysis;
 use proc_macro2::TokenStream as TokenStream2;
 use quote::{quote, ToTokens};
-use std::fs;
-use std::fs::File;
-use std::io::Write;
+// use std::fs;
+// use std::fs::File;
+// use std::io::Write;
 use syn::parse_quote;
 
 pub fn codegen(fn_analysis: FnAnalysis) -> TokenStream2 {
@@ -27,19 +27,12 @@ pub fn codegen(fn_analysis: FnAnalysis) -> TokenStream2 {
     output
 }
 
-fn debug(name: &str, stream: &proc_macro2::TokenStream) {
-    println!("here 1");
-    let mut file = File::create(name).unwrap();
-    println!("here 2");
-    write!(file, "{stream}").unwrap();
-    println!("here 3");
-    drop(file);
-
-    let input = fs::read_to_string(name).unwrap();
-    let syntax_tree = syn::parse_file(&input).unwrap();
-    println!("here 4");
-    let formatted = prettyplease::unparse(&syntax_tree);
-    println!("here 5");
-    print!("{}", formatted);
-    println!("here 6");
+fn debug(_name: &str, _stream: &proc_macro2::TokenStream) {
+    // let mut file = File::create(name).unwrap();
+    // write!(file, "{stream}").unwrap();
+    // drop(file);
+    // let input = fs::read_to_string(name).unwrap();
+    // let syntax_tree = syn::parse_file(&input).unwrap();
+    // let formatted = prettyplease::unparse(&syntax_tree);
+    // print!("{}", formatted);
 }
