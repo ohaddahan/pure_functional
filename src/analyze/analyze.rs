@@ -139,12 +139,7 @@ mod tests {
             _ => panic!("not a receiver"),
         };
         assert_eq!("&syn::item::Receiver", type_of(receiver));
-        assert_eq!(None, receiver.mutability);
-        let ty = match *receiver.ty.clone() {
-            Reference(t) => t,
-            _ => panic!("not a reference"),
-        };
-        assert_eq!(None, ty.mutability);
+        assert_eq!(true, receiver.mutability.is_none());
         assert_eq!(true, fn_analysis.has_self());
     }
 
@@ -160,12 +155,7 @@ mod tests {
             _ => panic!("not a receiver"),
         };
         assert_eq!("&syn::item::Receiver", type_of(receiver));
-        assert_ne!(None, receiver.mutability);
-        let ty = match *receiver.ty.clone() {
-            Reference(t) => t,
-            _ => panic!("not a reference"),
-        };
-        assert_ne!(None, ty.mutability);
+        assert_eq!(true, receiver.mutability.is_some());
         assert_eq!(true, fn_analysis.has_self());
         assert_eq!(false, fn_analysis.has_mut_arg());
     }
