@@ -1,6 +1,6 @@
 [package]
 name = "functional_macro"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["ohaddahan <ohaddahan@gmail.com>"]
 description = "A functional macro for Rust"
 keywords = ["functional", "proc_macro", "procmacro"]
