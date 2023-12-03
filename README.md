@@ -11,6 +11,7 @@ While it does have known limitations (see below), we still believe it provides v
 
 *Original*:
 ```rust
+#[pure_functional]
 fn foo(arg: i32) -> i32 {
     arg + 1
 }
@@ -30,19 +31,16 @@ fn foo(arg: i32) -> i32 {
 
 
 ## Known Limitations
-Any `struct` that internally hides `mutability` will not be caught by this `macro`.
+1. Any `struct` that internally hides `mutability` will not be caught by this `macro`. 
 
-For example, the following `struct` will not be caught by this `macro`:
-* `Arc<Mutex<T>>`.
-* `Cell<T>`.
-* `RefCell<T>`.
-* `RwLock<T>`.
-* `UnsafeCell<T>`.
+    For example, the following `struct` will not be caught by this `macro`:
+   * `Arc<Mutex<T>>`.
+   * `Cell<T>`.
+   * `RefCell<T>`.
+   * `RwLock<T>`.
+   * `UnsafeCell<T>`. 
+   
+   All of these wrap `UnsafeCell<T>` internally, which is why they are not caught by this `macro`.
 
-All of these wrap `UnsafeCell<T>` internally, which is why they are not caught by this `macro`.
-
-
-
-
-////// https://github.com/dtolnay/no-panic
-////// https://github.com/dtolnay/cargo-expand/issues/40
+2. `async` functions are not supported.
+3. `&self` and `&mut self` are not supported.
